@@ -44,6 +44,14 @@ function calculateParallelogramArea() {
     
 }
 
+function calculateEllipseArea() {
+    const majorRadius = getInputValue('ellipse-first-radius');
+    const minorRadius = getInputValue('ellipse-second-radius');
+    const area = 3.14 * majorRadius * minorRadius;
+    setElementInnerText('ellipse-area', area);
+    
+}
+
 
 function getInputValue(fieldId){
     const inputField = document.getElementById(fieldId);
