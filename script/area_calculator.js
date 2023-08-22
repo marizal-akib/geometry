@@ -31,3 +31,10 @@ function calculateRectangleArea(){
     areaSpan.innerText = area;
 
 }
+
+
+
+function calculateParallelogramArea() {
+    console.log("lpplplpl");
+    
+}
