@@ -1,4 +1,4 @@
-function calculateTriangleArea(){
+function calculateTriangleArea() {
     // get base value
     const baseField = document.getElementById('triangle-base')
     const baseValueText = baseField.value;
@@ -11,14 +11,14 @@ function calculateTriangleArea(){
     // console.log(height);
     const area = 0.5 * base * height;
     const areaSpan = document.getElementById('triangle-area');
-    areaSpan.innerText =area ;
+    areaSpan.innerText = area;
 
 
 }
 
-function calculateRectangleArea(){
+function calculateRectangleArea() {
     const widthField = document.getElementById('rectangle-width');
-    const widthValueText= widthField.value;
+    const widthValueText = widthField.value;
     const width = parseFloat(widthValueText);
     // console.log(width);
 
@@ -26,13 +26,13 @@ function calculateRectangleArea(){
     const lengthValueText = lengthField.value;
     const length = parseFloat(lengthValueText);
 
-    if(isNaN(width)){
+    if (isNaN(width)) {
         alert("width is not a number");
         return;
     }
 
-    const area = width*length;
-    const areaSpan= document.getElementById("rectangle-area");
+    const area = width * length;
+    const areaSpan = document.getElementById("rectangle-area");
     areaSpan.innerText = area;
 
 }
@@ -43,13 +43,15 @@ function calculateParallelogramArea() {
     const base = getInputValue('parallelogram-base');
     const height = getInputValue('parallelogram-height');
 
-    if(isNaN(base) || isNaN(height)){
-        alert("Please Insert A Number")
+    if (isNaN(base) || isNaN(height)) {
+        alert("Please Insert A Number");
     }
 
     const area = base * height;
     setElementInnerText("parallelogram-area", area);
-    
+
+    addCalculationEntry("Parallelogram", area);
+
 }
 
 function calculateEllipseArea() {
@@ -58,11 +60,13 @@ function calculateEllipseArea() {
     const area = 3.14 * majorRadius * minorRadius;
     const areaTwoDecimal = area.toFixed(2);
     setElementInnerText('ellipse-area', areaTwoDecimal);
-    
+
+    addCalculationEntry("Ellipse", areaTwoDecimal)
+
 }
 
 
-function getInputValue(fieldId){
+function getInputValue(fieldId) {
     const inputField = document.getElementById(fieldId);
     const inputValueText = inputField.value;
     const value = parseFloat(inputValueText);
@@ -71,7 +75,23 @@ function getInputValue(fieldId){
 }
 
 // reuseable set span , p , div ect text
-function setElementInnerText(elementId ,area){
+function setElementInnerText(elementId, area) {
     const element = document.getElementById(elementId);
-    element.innerText =  area;
+    element.innerText = area;
+}
+
+
+function addCalculationEntry(areaType, area) {
+    console.log(areaType + ' ' + area);
+    const calculationEntry = document.getElementById('calculation-entry');
+
+    const count = calculationEntry.childElementCount;
+
+    const p = document.createElement('p');
+    // p.innerHTML =areaType+' '+ area;
+    p.classList.add('my-4');
+    p.classList.add("font-bold");
+    p.innerHTML = `${count + 1}. ${areaType} ${area} cm<sup>2</sup> <button class="btn btn-sm btn-success">Convert</button>`;
+
+    calculationEntry.appendChild(p);
 }
